@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="kr">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Yovis Pose Upload Page</title>
+
+        <script>
+            function checkInput() {
+                var inputField = document.getElementById('pose_name');
+                var submitButton = document.getElementById('pose_submit');
+
+                // 입력 필드에 내용이 있으면 버튼을 활성화, 없으면 비활성화합니다.
+                submitButton.disabled = inputField.value.length === 0;  
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                // 입력 필드를 가져옵니다.
+                var inputField = document.getElementById('pose_name');
+
+                // 입력 필드에 'input' 이벤트 리스너를 추가합니다.
+                inputField.addEventListener('input', checkInput);
+
+                // 페이지 로드시 버튼 상태를 초기화합니다.
+                checkInput();
+            });
+        </script>  
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f7f7f7;
+                padding: 20px;
+            }
+
+            form {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 500px;
+                margin: 40px auto;
+            }
+
+            div{
+                margin: auto;
+                text-align: center;
+            }
+
+            input[type="text"],
+            input[type="file"] {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
+
+            button {
+                background-color: #5c85d6;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 10px;
+            }
+
+            button:hover {
+                background-color: #4a70b5;
+            }
+
+            button:disabled {
+                background-color: #cccccc;
+                color: #777777;
+                cursor: not-allowed;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div><h2>Yovis 포즈 등록</h2></div>
+        <form id="form" action = "/pose_upload/send_name" method = "post">
+            <table>
+                <tr>
+                    <h5>
+                        포즈 이름
+                        <input type = "text" name = "pose_name" id = "pose_name" placeholder="포즈 이름을 입력하세요"/>
+                    </h5>
+                </tr>
+                <tr>
+                    <button type= "submit" id = "pose_submit"> 포즈 이름 등록 </button>  
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
+
